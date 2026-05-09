@@ -1,0 +1,84 @@
+@use "sass:color";
+@use "abstracts/variables" as vars;
+@use "abstracts/mixins" as mix;
+
+.bento-card-elite {
+  @include mix.bento-hover-effect;
+  @include mix.glass-morphism(0.8, 40px);
+  border-radius: 18px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.ui-card {
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #f1f5f9;
+  box-shadow: 0 4px 20px -10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  padding: 32px;
+
+  &:hover {
+    border-color: #e2e8f0;
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.text-premium-gradient {
+  @include mix.text-gradient(vars.$gradient-premium);
+}
+
+.sanitary-alert {
+  background: vars.$state-danger;
+  color: vars.$state-danger-text;
+  border-radius: 20px;
+  padding: 12px 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.premium-button {
+  padding: 16px 32px;
+  border-radius: 24px;
+  background: vars.$primary-color;
+  color: white;
+  font-weight: 900;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -12px rgba(79, 70, 229, 0.5);
+    background: color.adjust(vars.$primary-color, $lightness: 5%);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.95);
+  }
+
+  &.secondary {
+    background: white;
+    color: vars.$slate-900;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+
+    &:hover {
+      background: vars.$slate-50;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+  }
+}

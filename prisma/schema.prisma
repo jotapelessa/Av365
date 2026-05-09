@@ -1,0 +1,832 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+  engineType      = "library"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Producer {
+  id                  String              @id @default(cuid())
+  name                String
+  slug                String?             @unique
+  email               String?
+  phone               String?
+  cnpj                String?             @unique
+  cpf                 String?             @unique
+  location            String?
+  plan                String              @default("FREE")
+  status              String              @default("ACTIVE")
+  updatedAt           DateTime            @updatedAt
+  cooperativaId       String?
+  logoUrl             String?
+  taxAddress          Json?               @default("{}")
+  createdAt           DateTime            @default(now())
+  customers           Customer[]
+  employees           Employee[]
+  expenses            Expense[]
+  financialAccounts   FinancialAccount[]
+  partners            FinancialPartner[]
+  flocks              Flock[]
+  healthAlerts        HealthAlert[]
+  houses              House[]
+  installments        Installment[]
+  internalTransfers   InternalTransfer[]
+  inventoryCategories InventoryCategory[]
+  inventoryItems      InventoryItem[]
+  inventoryMovements  InventoryMovement[]
+  invoices            Invoice[]
+  cooperativa         Cooperativa?        @relation(fields: [cooperativaId], references: [id])
+  settings            ProducerSettings?
+  productAliases      ProductAlias[]
+  sales               Sale[]
+  silos               Silo[]
+  siloMovements       SiloMovement[]
+  subscription        Subscription?
+  suppliers           Supplier[]
+  tasks               Task[]
+  users               User[]
+  vaccinationRecords  VaccinationRecord[]
+
+  @@index([cooperativaId])
+}
+
+model User {
+  id           String              @id
+  email        String              @unique
+  name         String?
+  role         Role                @default(PRODUCER)
+  producerId   String?
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  auditLogs    AuditLog[]
+  tasks        Task[]
+  producer     Producer?           @relation(fields: [producerId], references: [id])
+  vaccinations VaccinationRecord[]
+}
+
+model House {
+  id             String        @id @default(cuid())
+  name           String
+  capacity       Int
+  description    String?
+  status         String        @default("ACTIVE")
+  width          Decimal?      @default(12.0) @db.Decimal(10, 2)
+  length         Decimal?      @default(100.0) @db.Decimal(10, 2)
+  housingSystem  HousingSystem @default(CONVENTIONAL)
+  hasClimate     Boolean       @default(false)
+  hasAutoFeeding Boolean       @default(false)
+  lastSanitized  DateTime?
+  producerId     String
+  flockId        String?
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  records        DailyRecord[]
+  flock          Flock?        @relation(fields: [flockId], references: [id])
+  producer       Producer      @relation(fields: [producerId], references: [id])
+  tasks          Task[]
+
+  @@index([producerId])
+  @@index([flockId])
+}
+
+model Flock {
+  id                 String              @id @default(cuid())
+  name               String
+  breed              String
+  purpose            FlockPurpose        @default(POSTURA)
+  initialQuantity    Int
+  currentQuantity    Int
+  acquisitionDate    DateTime
+  birthDate          DateTime?
+  ageAtArrival       Int?
+  supplier           String?
+  initialWeight      Float?
+  unitPrice          Decimal?            @db.Decimal(10, 2)
+  totalCost          Decimal?            @db.Decimal(10, 2)
+  status             String              @default("ACTIVE")
+  producerId         String
+  lineageStandardId  String?
+  createdAt          DateTime            @default(now())
+  updatedAt          DateTime            @updatedAt
+  records            DailyRecord[]
+  expenses           Expense[]
+  lineageStandard    LineageStandard?    @relation(fields: [lineageStandardId], references: [id])
+  producer           Producer            @relation(fields: [producerId], references: [id])
+  healthAlerts       HealthAlert[]
+  houses             House[]
+  inventoryMovements InventoryMovement[]
+  tasks              Task[]
+  vaccinations       VaccinationRecord[]
+
+  @@index([producerId])
+}
+
+model DailyRecord {
+  id            String   @id @default(cuid())
+  date          DateTime @default(now())
+  eggsTotal     Int      @default(0)
+  eggsBroken    Int      @default(0)
+  eggsDirty     Int      @default(0)
+  feedConsumed  Float    @default(0)
+  mortality     Int      @default(0)
+  waterConsumed Float?
+  notes         String?
+  temperature   Float?
+  humidity      Float?
+  flockId       String
+  houseId       String?
+  producerId    String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  flock         Flock    @relation(fields: [flockId], references: [id])
+  house         House?   @relation(fields: [houseId], references: [id])
+
+  @@index([flockId])
+  @@index([houseId])
+  @@index([producerId])
+}
+
+model LineageStandard {
+  id                     String   @id @default(cuid())
+  breedName              String   @unique
+  species                String   @default("Galinha Poedeira")
+  description            String?
+  expectedProductionPeak Float?
+  expectedFCR            Float?
+  standardsJson          Json
+  createdAt              DateTime @default(now())
+  updatedAt              DateTime @updatedAt
+  flocks                 Flock[]
+}
+
+model ProducerSettings {
+  id         String   @id @default(cuid())
+  producerId String   @unique
+  config     Json
+  updatedAt  DateTime @updatedAt
+  producer   Producer @relation(fields: [producerId], references: [id])
+}
+
+model Expense {
+  id           String            @id @default(cuid())
+  category     ExpenseCategory
+  amount       Decimal           @db.Decimal(10, 2)
+  date         DateTime          @default(now())
+  description  String?
+  status       PaymentStatus     @default(PAID)
+  flockId      String?
+  producerId   String
+  supplierId   String?
+  employeeId   String?
+  accountId    String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  invoiceUrl   String?
+  account      FinancialAccount? @relation(fields: [accountId], references: [id])
+  employee     Employee?         @relation(fields: [employeeId], references: [id])
+  flock        Flock?            @relation(fields: [flockId], references: [id])
+  producer     Producer          @relation(fields: [producerId], references: [id])
+  supplier     Supplier?         @relation(fields: [supplierId], references: [id])
+  installments Installment[]
+
+  @@index([producerId])
+  @@index([flockId])
+  @@index([supplierId])
+  @@index([employeeId])
+  @@index([accountId])
+}
+
+model Sale {
+  id           String            @id @default(cuid())
+  product      SaleProduct
+  quantity     Float
+  unit         String
+  amount       Decimal           @db.Decimal(10, 2)
+  date         DateTime          @default(now())
+  description  String?
+  status       PaymentStatus     @default(PAID)
+  producerId   String
+  customerId   String?
+  accountId    String?
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  invoiceUrl   String?
+  installments Installment[]
+  account      FinancialAccount? @relation(fields: [accountId], references: [id])
+  customer     Customer?         @relation(fields: [customerId], references: [id])
+  producer     Producer          @relation(fields: [producerId], references: [id])
+
+  @@index([producerId])
+  @@index([customerId])
+  @@index([accountId])
+}
+
+model FinancialAccount {
+  id            String             @id @default(cuid())
+  name          String
+  type          AccountType        @default(BANK)
+  balance       Decimal            @default(0) @db.Decimal(15, 2)
+  bankDetails   Json?
+  producerId    String
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+  expenses      Expense[]
+  producer      Producer           @relation(fields: [producerId], references: [id])
+  installments  Installment[]
+  transfersFrom InternalTransfer[] @relation("FromAccount")
+  transfersTo   InternalTransfer[] @relation("ToAccount")
+  sales         Sale[]
+
+  @@index([producerId])
+}
+
+model InternalTransfer {
+  id            String           @id @default(cuid())
+  amount        Decimal          @db.Decimal(15, 2)
+  date          DateTime         @default(now())
+  description   String?
+  fromAccountId String
+  toAccountId   String
+  producerId    String
+  createdAt     DateTime         @default(now())
+  fromAccount   FinancialAccount @relation("FromAccount", fields: [fromAccountId], references: [id])
+  producer      Producer         @relation(fields: [producerId], references: [id])
+  toAccount     FinancialAccount @relation("ToAccount", fields: [toAccountId], references: [id])
+
+  @@index([producerId])
+}
+
+model Employee {
+  id                String    @id @default(cuid())
+  name              String
+  cpf               String?   @unique
+  phone             String?
+  position          String?
+  baseSalary        Decimal?  @db.Decimal(10, 2)
+  hireDate          DateTime  @default(now())
+  status            String    @default("ACTIVE")
+  producerId        String
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  bankDetails       Json?     @default("{}")
+  contractUrl       String?
+  documentsJson     Json?     @default("[]")
+  taxInfo           Json?     @default("{}")
+  veterinaryLicense String?
+  producer          Producer  @relation(fields: [producerId], references: [id])
+  expenses          Expense[]
+
+  @@index([producerId])
+}
+
+model Customer {
+  id         String   @id @default(cuid())
+  name       String
+  taxId      String?  @unique
+  email      String?
+  phone      String?
+  address    String?
+  producerId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  producer   Producer @relation(fields: [producerId], references: [id])
+  sales      Sale[]
+  tasks      Task[]
+
+  @@index([producerId])
+}
+
+model Supplier {
+  id         String    @id @default(cuid())
+  name       String
+  cnpj       String?   @unique
+  category   String?
+  contact    String?
+  phone      String?
+  producerId String
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  address    String?
+  expenses   Expense[]
+  producer   Producer  @relation(fields: [producerId], references: [id])
+  tasks      Task[]
+
+  @@index([producerId])
+}
+
+model FinancialPartner {
+  id         String   @id @default(cuid())
+  name       String
+  share      Float?
+  producerId String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  producer   Producer @relation(fields: [producerId], references: [id])
+
+  @@index([producerId])
+}
+
+model Installment {
+  id         String            @id @default(cuid())
+  amount     Decimal           @db.Decimal(15, 2)
+  dueDate    DateTime
+  paidAt     DateTime?
+  status     PaymentStatus     @default(PENDING)
+  notes      String?
+  expenseId  String?
+  saleId     String?
+  accountId  String?
+  producerId String
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @updatedAt
+  invoiceUrl String?
+  account    FinancialAccount? @relation(fields: [accountId], references: [id])
+  expense    Expense?          @relation(fields: [expenseId], references: [id], onDelete: Cascade)
+  producer   Producer          @relation(fields: [producerId], references: [id])
+  sale       Sale?             @relation(fields: [saleId], references: [id], onDelete: Cascade)
+
+  @@index([producerId])
+  @@index([expenseId])
+  @@index([saleId])
+  @@index([accountId])
+}
+
+model SubscriptionPlan {
+  id                 String         @id @default(cuid())
+  name               String
+  description        String?
+  priceMonthly       Decimal        @db.Decimal(10, 2)
+  priceYearly        Decimal        @db.Decimal(10, 2)
+  maxFlocks          Int            @default(1)
+  maxHouses          Int            @default(1)
+  maxUsers           Int            @default(2)
+  features           Json
+  stripeProductId    String?        @unique
+  stripePriceIdMonth String?        @unique
+  stripePriceIdYear  String?        @unique
+  isActive           Boolean        @default(true)
+  isLegacy           Boolean        @default(false)
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+  subscriptions      Subscription[]
+}
+
+model Subscription {
+  id                   String             @id @default(cuid())
+  producerId           String             @unique
+  planId               String
+  status               SubscriptionStatus @default(ACTIVE)
+  currentPeriodStart   DateTime           @default(now())
+  currentPeriodEnd     DateTime           @default(now())
+  cancelAtPeriodEnd    Boolean            @default(false)
+  stripeSubscriptionId String?            @unique
+  stripeCustomerId     String?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+  invoices             Invoice[]
+  plan                 SubscriptionPlan   @relation(fields: [planId], references: [id])
+  producer             Producer           @relation(fields: [producerId], references: [id])
+
+  @@index([producerId])
+  @@index([stripeSubscriptionId])
+}
+
+model Invoice {
+  id             String        @id @default(cuid())
+  subscriptionId String
+  producerId     String
+  amount         Decimal       @db.Decimal(10, 2)
+  currency       String        @default("BRL")
+  status         InvoiceStatus @default(PENDING)
+  billingDate    DateTime      @default(now())
+  paidAt         DateTime?
+  invoiceUrl     String?
+  createdAt      DateTime      @default(now())
+  producer       Producer      @relation(fields: [producerId], references: [id])
+  subscription   Subscription  @relation(fields: [subscriptionId], references: [id], onDelete: Cascade)
+
+  @@index([producerId])
+  @@index([subscriptionId])
+}
+
+model InventoryCategory {
+  id          String          @id @default(cuid())
+  name        String
+  description String?
+  producerId  String
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+  producer    Producer        @relation(fields: [producerId], references: [id])
+  items       InventoryItem[]
+
+  @@index([producerId])
+}
+
+model InventoryItem {
+  id           String              @id @default(cuid())
+  name         String
+  unit         InventoryUnit       @default(UNIT)
+  minStock     Float               @default(0)
+  currentStock Float               @default(0)
+  averageCost  Decimal             @default(0) @db.Decimal(10, 2)
+  categoryId   String
+  producerId   String
+  createdAt    DateTime            @default(now())
+  updatedAt    DateTime            @updatedAt
+  taxInfo      Json?               @default("{}")
+  category     InventoryCategory   @relation(fields: [categoryId], references: [id])
+  producer     Producer            @relation(fields: [producerId], references: [id])
+  movements    InventoryMovement[]
+  aliases      ProductAlias[]
+  tasks        Task[]
+  vaccinations VaccinationRecord[]
+
+  @@index([producerId])
+  @@index([categoryId])
+}
+
+model InventoryMovement {
+  id          String                @id @default(cuid())
+  type        InventoryMovementType
+  quantity    Float
+  unitCost    Decimal?              @db.Decimal(10, 2)
+  totalCost   Decimal?              @db.Decimal(10, 2)
+  date        DateTime              @default(now())
+  reason      String?
+  itemId      String
+  flockId     String?
+  producerId  String
+  invoiceUrl  String?
+  createdAt   DateTime              @default(now())
+  batchNumber String?
+  expiryDate  DateTime?
+  flock       Flock?                @relation(fields: [flockId], references: [id])
+  item        InventoryItem         @relation(fields: [itemId], references: [id])
+  producer    Producer              @relation(fields: [producerId], references: [id])
+
+  @@index([producerId])
+  @@index([itemId])
+  @@index([flockId])
+}
+
+model ProductAlias {
+  id         String        @id @default(cuid())
+  aliasName  String
+  itemId     String
+  producerId String
+  createdAt  DateTime      @default(now())
+  item       InventoryItem @relation(fields: [itemId], references: [id])
+  producer   Producer      @relation(fields: [producerId], references: [id])
+
+  @@unique([aliasName, producerId])
+  @@index([producerId])
+  @@index([itemId])
+}
+
+model Task {
+  id              String         @id @default(cuid())
+  title           String
+  description     String?
+  status          TaskStatus     @default(PENDING)
+  dueDate         DateTime
+  completedAt     DateTime?
+  assignedUserId  String?
+  houseId         String?
+  flockId         String?
+  producerId      String
+  completionPhoto String?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  parentTaskId    String?
+  priority        TaskPriority   @default(MEDIUM)
+  recurrenceRule  String?
+  pausedAt        DateTime?
+  category        TaskCategory   @default(OTHER)
+  clientId        String?
+  inventoryItemId String?
+  supplierId      String?
+  assignedTo      User?          @relation(fields: [assignedUserId], references: [id])
+  customer        Customer?      @relation(fields: [clientId], references: [id])
+  flock           Flock?         @relation(fields: [flockId], references: [id])
+  house           House?         @relation(fields: [houseId], references: [id])
+  inventoryItem   InventoryItem? @relation(fields: [inventoryItemId], references: [id])
+  parentTask      Task?          @relation("TaskRecurrence", fields: [parentTaskId], references: [id])
+  childTasks      Task[]         @relation("TaskRecurrence")
+  producer        Producer       @relation(fields: [producerId], references: [id])
+  supplier        Supplier?      @relation(fields: [supplierId], references: [id])
+
+  @@index([producerId])
+  @@index([assignedUserId])
+  @@index([houseId])
+  @@index([flockId])
+  @@index([clientId])
+  @@index([supplierId])
+  @@index([inventoryItemId])
+}
+
+model VaccinationRecord {
+  id              String        @id @default(cuid())
+  date            DateTime      @default(now())
+  notes           String?
+  flockId         String
+  vaccineId       String
+  appliedByUserId String?
+  producerId      String
+  createdAt       DateTime      @default(now())
+  appliedBy       User?         @relation(fields: [appliedByUserId], references: [id])
+  flock           Flock         @relation(fields: [flockId], references: [id])
+  producer        Producer      @relation(fields: [producerId], references: [id])
+  vaccine         InventoryItem @relation(fields: [vaccineId], references: [id])
+
+  @@index([flockId])
+  @@index([producerId])
+}
+
+model HealthAlert {
+  id          String              @id @default(cuid())
+  type        String
+  severity    HealthAlertSeverity @default(MEDIUM)
+  description String
+  resolved    Boolean             @default(false)
+  resolvedAt  DateTime?
+  flockId     String
+  producerId  String
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  flock       Flock               @relation(fields: [flockId], references: [id])
+  producer    Producer            @relation(fields: [producerId], references: [id])
+
+  @@index([flockId])
+  @@index([producerId])
+}
+
+model AuditLog {
+  id         String        @id @default(cuid())
+  category   AuditCategory @default(OPERATIONAL)
+  action     String
+  entityType String?
+  entityId   String?
+  userId     String?
+  producerId String?
+  dataBefore Json?
+  dataAfter  Json?
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime      @default(now())
+  user       User?         @relation(fields: [userId], references: [id])
+
+  @@index([producerId])
+  @@index([userId])
+  @@index([createdAt])
+}
+
+model GlobalConfig {
+  id                String   @id @default("default")
+  systemName        String   @default("EggTrack Elite")
+  primaryColor      String   @default("#4F46E5")
+  secondaryColor    String   @default("#1E1B4B")
+  logoUrl           String?
+  faviconUrl        String?
+  maintenanceMode   Boolean  @default(false)
+  sessionTimeoutMin Int      @default(60)
+  heroTitle         String   @default("Digitalize sua Granja com Inteligência.")
+  heroSubtitle      String   @default("A plataforma definitiva para gestão de lotes e controle financeiro.")
+  heroCtaText       String   @default("Começar Agora")
+  heroVideoUrl      String?
+  featuresJson      Json     @default("[]")
+  contactEmail      String?
+  contactPhone      String?
+  seoTitle          String   @default("EggTrack Elite | Gestão Avícola Profissional")
+  seoDescription    String   @default("Transforme sua granja com tecnologia de ponta.")
+  updatedAt         DateTime @updatedAt
+  designConfig      Json?    @default("{}")
+}
+
+model AdminActionLog {
+  id        String   @id @default(cuid())
+  adminId   String
+  action    String
+  details   Json?
+  ipAddress String?
+  createdAt DateTime @default(now())
+}
+
+model Cooperativa {
+  id        String     @id @default(cuid())
+  name      String
+  cnpj      String?    @unique
+  address   String?
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  producers Producer[]
+}
+
+model WebhookLog {
+  id        String   @id @default(cuid())
+  provider  String   @default("STRIPE")
+  eventType String
+  payload   Json
+  status    String   @default("SUCCESS")
+  error     String?
+  latency   Int?
+  createdAt DateTime @default(now())
+
+  @@index([provider])
+  @@index([eventType])
+}
+
+model Silo {
+  id           String         @id @default(cuid())
+  name         String
+  capacity     Float
+  currentStock Float          @default(0)
+  feedType     String?
+  producerId   String
+  status       String         @default("ACTIVE")
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  producer     Producer       @relation(fields: [producerId], references: [id])
+  movements    SiloMovement[]
+
+  @@index([producerId])
+}
+
+model SiloMovement {
+  id         String                @id @default(cuid())
+  type       InventoryMovementType
+  quantity   Float
+  date       DateTime              @default(now())
+  reason     String?
+  siloId     String
+  producerId String
+  createdAt  DateTime              @default(now())
+  producer   Producer              @relation(fields: [producerId], references: [id])
+  silo       Silo                  @relation(fields: [siloId], references: [id])
+
+  @@index([producerId])
+  @@index([siloId])
+}
+
+model UIFeedback {
+  id          String   @id @default(cuid())
+  elementId   String?
+  pageUrl     String
+  viewport    String
+  issueType   String
+  description String?
+  status      String   @default("OPEN")
+  screenshot  String?
+  adminId     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([adminId])
+  @@index([status])
+}
+
+model UILayoutConfig {
+  id          String   @id @default(cuid())
+  pageUrl     String
+  elementId   String
+  viewport    String   @default("Desktop")
+  span        Int      @default(12)
+  order       Int      @default(0)
+  producerId  String?
+  updatedAt   DateTime @updatedAt
+  createdAt   DateTime @default(now())
+
+  @@unique([pageUrl, elementId, viewport])
+  @@index([pageUrl])
+}
+
+enum Role {
+  SUPER_ADMIN
+  PRODUCER
+  EMPLOYEE
+  VETERINARIAN
+  TECHNICAL_ASSISTANT
+  SUPPLIER
+  COOPERATIVE
+}
+
+enum FlockPurpose {
+  POSTURA
+  CORTE
+  RECRIA
+}
+
+enum HousingSystem {
+  CONVENTIONAL
+  AUTOMATED
+  DARK_HOUSE
+}
+
+enum ExpenseCategory {
+  FEED
+  MEDICINE
+  ENERGY
+  WATER
+  LABOR
+  MAINTENANCE
+  OTHER
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  OVERDUE
+  CANCELED
+}
+
+enum SaleProduct {
+  EGGS
+  BIRDS
+  MANURE
+  OTHER
+}
+
+enum AccountType {
+  CASH
+  BANK
+  LOAN
+  EQUITY
+  ASSET
+  LIABILITY
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAUSED
+  CANCELED
+  PAST_DUE
+  TRIAL
+}
+
+enum InvoiceStatus {
+  PAID
+  PENDING
+  FAILED
+  VOID
+}
+
+enum InventoryMovementType {
+  IN
+  OUT
+  ADJUSTMENT
+  LOSS
+}
+
+enum InventoryUnit {
+  KG
+  L
+  UNIT
+  BOX
+  TRAY
+  DOSE
+}
+
+enum TaskStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  OVERDUE
+  CANCELED
+  PAUSED
+  DELAYED
+  TRANSFERRED
+}
+
+enum TaskCategory {
+  SANITY
+  FEED
+  LOGISTICS
+  COMMERCIAL
+  SUPPLY
+  MAINTENANCE
+  ADMIN
+  OTHER
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum HealthAlertSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AuditCategory {
+  SECURITY
+  FINANCIAL
+  OPERATIONAL
+  TECHNICAL
+}

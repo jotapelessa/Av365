@@ -1,0 +1,25 @@
+// 🐣 EggTrack Elite - Bridge to Standard Tokens
+@forward "standard_tokens";
+@use "standard_tokens" as std;
+
+$indigo-elite: std.$color-primary;
+$emerald-elite: std.$color-success;
+$amber-elite: std.$color-warning;
+$rose-elite: std.$color-danger;
+$slate-dark: std.$color-bg-dark;
+$slate-muted: std.$color-slate-500;
+
+// Sanitary States
+$state-danger: std.$color-danger-bg;
+$state-danger-text: std.$color-danger-text;
+$state-success: std.$color-success-bg;
+$state-success-text: std.$color-success-text;
+
+// Gradients
+$gradient-premium: linear-gradient(135deg, std.$color-primary 0%, #7c3aed 100%);
+$gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 100%);
+
+// Legacy support for primary-color
+$primary-color: std.$color-primary;
+$slate-900: std.$color-slate-900;
+$slate-50: std.$color-slate-50;

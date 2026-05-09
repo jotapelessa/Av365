@@ -1,0 +1,46 @@
+@use "variables" as vars;
+
+@mixin glass-morphism($opacity: 0.7, $blur: 24px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid vars.$glass-border;
+  box-shadow: vars.$glass-shadow;
+}
+
+@mixin bento-hover-effect {
+  transition: vars.$transition-smooth;
+  &:hover {
+    transform: translateY(-8px) scale(1.01);
+    box-shadow: 0 20px 40px -12px rgba(79, 70, 229, 0.15);
+    border-color: rgba(79, 70, 229, 0.1);
+  }
+}
+
+@mixin text-gradient($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin pulse-alert($color) {
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba($color, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba($color, 0); }
+    100% { box-shadow: 0 0 0 0 rgba($color, 0); }
+  }
+  animation: pulse 2s infinite;
+}
+
+@mixin premium-card {
+  border-radius: vars.$radius-xl;
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: vars.$transition-smooth;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+}

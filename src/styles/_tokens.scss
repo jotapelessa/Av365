@@ -1,0 +1,38 @@
+// Design Tokens Bridge - EggTrack LUXURY PASTEL
+@use "abstracts/standard_tokens" as std;
+
+// Colors
+$color-bg-deep: std.$color-bg-light;
+$color-bg-card: std.$glass-bg;
+$color-primary: std.$color-primary;
+$color-accent-emerald: std.$color-pastel-emerald;
+$color-accent-violet: std.$color-pastel-violet;
+$color-accent-blue: std.$color-pastel-blue;
+$color-text-main: std.$color-slate-800;
+$color-text-muted: std.$color-slate-500;
+
+// Glassmorphism
+$glass-blur: blur(std.$glass-blur);
+$glass-border: 1px solid std.$glass-border;
+$glass-bg: std.$glass-bg;
+$glass-shadow: std.$glass-shadow;
+
+// Spacing
+$spacing-xs: std.$spacing-xs;
+$spacing-sm: std.$spacing-sm;
+$spacing-md: std.$spacing-md;
+$spacing-lg: std.$spacing-lg;
+$spacing-xl: std.$spacing-xl;
+
+// Border Radius
+$radius-sm: std.$radius-sm;
+$radius-md: std.$radius-md;
+$radius-lg: std.$radius-lg;
+
+// Transitions
+$transition-fast: std.$transition-fast;
+$transition-smooth: std.$transition-smooth;
+
+// Typography
+$font-main: std.$font-main;
+$font-accent: std.$font-main;

@@ -1,26 +1,278 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Standardized Tokens - Tailwind v4 detecta automaticamente esses prefixos */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --radius-ui: 18px;
+  --spacing-ui-gap: 24px;
+  --spacing-ui-padding: 32px;
+
+  /* Elite Palette */
+  --color-primary: #4f46e5;
+  --color-primary-light: #818cf8;
+  --color-primary-bg: rgba(79, 70, 229, 0.08);
+  
+  --color-success: #10b981;
+  --color-success-bg: rgba(16, 185, 129, 0.1);
+  --color-success-text: #065f46;
+  
+  --color-danger: #f43f5e;
+  --color-danger-bg: rgba(244, 63, 94, 0.1);
+  --color-danger-text: #9f1239;
+  
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+  --color-warning-text: #92400e;
+  
+  /* Luxury Pastel Accents */
+  --color-pastel-emerald: #dcfce7;
+  --color-pastel-violet: #ede9fe;
+  --color-pastel-blue: #e0f2fe;
+  --color-pastel-amber: #fef3c7;
+  --color-pastel-rose: #ffe4e6;
+
+  /* Backgrounds & Text */
+  --color-background: #f8fafc;
+  --color-foreground: #1e293b;
+  --color-muted: #64748b;
+  --color-card: rgba(255, 255, 255, 0.85);
+  --color-border: rgba(0, 0, 0, 0.08);
+
+  /* Specific Admin Background (Now Pastel Light) */
+  --color-admin-bg: #f8fafc;
+
+  /* Defaults do Sistema */
+  --ui-radius: 18px;
+  --ui-gap: 24px;
+  --ui-padding: 32px;
+  
+  --background: #f8fafc;
+  --foreground: #1e293b;
+  --card: rgba(255, 255, 255, 0.7);
+  --border: rgba(0, 0, 0, 0.05);
+
+  /* Fluid Typography Tokens - Mais conservadores para evitar estouro em colunas */
+  --text-fluid-h1: clamp(1.25rem, 4.5vw, 2.25rem);    /* Reduzido de 2.5rem */
+  --text-fluid-h2: clamp(1rem, 3.5vw, 1.75rem);       /* Reduzido de 2rem */
+  --text-fluid-h3: clamp(0.875rem, 2.5vw, 1.125rem);  /* Reduzido de 1.25rem */
+  --text-fluid-stat: clamp(1rem, 4vw, 2rem);          /* Reduzido de 2.25rem */
+  
+  /* Adaptive Spacing */
+  --padding-fluid: clamp(0.75rem, 2.5vw, 1.75rem);
+  --gap-fluid: clamp(0.5rem, 1.5vw, 1.25rem);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    border-color: var(--border);
+    min-width: 0; /* Critical: Prevent flex/grid items from overflowing */
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, .text-h1 { font-size: var(--text-fluid-h1); font-weight: 900; line-height: 1.1; letter-spacing: -0.04em; }
+  h2, .text-h2 { font-size: var(--text-fluid-h2); font-weight: 900; line-height: 1.2; letter-spacing: -0.02em; }
+  h3, .text-h3 { font-size: var(--text-fluid-h3); font-weight: 800; letter-spacing: -0.01em; }
+  .text-stat { 
+    font-size: var(--text-fluid-stat); 
+    font-weight: 900; 
+    font-style: italic; 
+    line-height: 1;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+  
+  .icon-fluid {
+    width: clamp(1rem, 3vw, 1.5rem);
+    height: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .icon-fluid-lg {
+    width: clamp(1.5rem, 5vw, 2.5rem);
+    height: clamp(1.5rem, 5vw, 2.5rem);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(40px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 25px -5px rgba(226, 232, 240, 0.4);
+  }
+  
+  .bento-card-elite {
+    background-color: var(--card);
+    border-radius: 18px;
+    padding: var(--padding-fluid);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(40px);
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-fluid);
+    min-width: 0;
+    container-type: inline-size; /* Habilitar Container Queries */
+    container-name: card;
+  }
+
+  /* Typography override based on Card Size (not screen size) */
+  @container card (max-width: 280px) {
+    .text-stat {
+      font-size: clamp(0.875rem, 10cqw, 1.25rem) !important;
+    }
+  }
+
+  @container card (max-width: 200px) {
+    .text-stat {
+      font-size: clamp(0.75rem, 12cqw, 1rem) !important;
+    }
+  }
+
+  .bento-card-elite:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    transform: translateY(-4px);
+    border-color: rgba(79, 70, 229, 0.2);
+  }
+
+  .premium-btn {
+    border-radius: 24px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    box-shadow: 0 10px 20px -10px rgba(79, 70, 229, 0.4);
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+  }
+
+  .premium-btn:active {
+    transform: scale(0.95);
+  }
+
+  .ui-card {
+    background-color: var(--card);
+    border-radius: 18px;
+    padding: var(--padding-fluid);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    transition: all 300ms;
+  }
+
+  .ui-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #e2e8f0;
+    border-radius: 9999px;
+    transition: background-color 200ms;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #c7d2fe;
+  }
+}
+
+@media print {
+  /* Esconder elementos de UI */
+  aside, 
+  nav, 
+  footer, 
+  button, 
+  .no-print,
+  [role="button"],
+  .fixed.top-4.left-4 {
+    display: none !important;
+  }
+
+  /* Reset de Layout */
+  body, html {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  main {
+    margin-left: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    position: static !important;
+    transform: none !important;
+  }
+
+  /* Redundância para rotas de impressão */
+  .print-only-layout {
+    margin-left: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Ajuste de Container */
+  .p-4, .md\:p-6, .lg\:p-8 {
+    padding: 0 !important;
+  }
+
+  /* Garantir que tabelas e cards ocupem a largura total */
+  .bento-card-elite, .ui-card, .glass-card {
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    padding: 10mm 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  /* Ajuste de tabelas */
+  table {
+    width: 100% !important;
+    table-layout: auto !important;
+  }
+
+  th, td {
+    border-bottom: 1px solid #f1f5f9 !important;
+    padding: 4mm 2mm !important;
+  }
+
+  /* Forçar quebras de página controladas */
+  .page-break {
+    page-break-before: always;
+  }
+
+  /* Ajuste de cores para impressão (economiza tinta e mantém legibilidade) */
+  .text-primary, .text-indigo-600 {
+    color: #4f46e5 !important;
+  }
+  
+  .text-slate-400, .text-slate-500 {
+    color: #64748b !important;
+  }
+
+  /* Remover decorações de hover */
+  .hover\:shadow-xl {
+    box-shadow: none !important;
+  }
+
+  /* Configurações da Página */
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
 }

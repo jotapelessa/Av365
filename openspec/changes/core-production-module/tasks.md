@@ -1,0 +1,15 @@
+## 5. Módulo de Produção e Saúde (Avançado)
+- [x] 5.1 Implementar registro de produção diária (Ovos, Raçã, Mortalidade)
+- [x] 5.2 Criar dashboard de produtividade com gráficos (Recharts) (Ref 4.1)
+- [x] 5.3 Implementar cálculo automático de taxa de postura (Ref 4.2)
+- [x] 5.4 Adicionar suporte a múltiplos galpões por lote (Ref 3.1)
+
+## 6. Módulo Financeiro (Fase Inicial)
+- [x] 6.1 Criar schema de despesas (Raçã, Medicamentos, Energia) (Ref 5.1)
+- [x] 6.2 Implementar registro de vendas de ovos e descartes (Ref 5.2)
+- [x] 6.3 Dashboard de fluxo de caixa simplificado (Ref 5.3)
+
+## 7. Refinamento de UI/UX (Luxury Pastel)
+- [x] 7.1 Implementar Modais para lançamentos rápidos (Ref 20.3)
+- [x] 7.2 Adicionar Skeletons de carregamento (Ref 20.6)
+- [x] 7.3 Customizar calendário de tarefas operacionais (Ref 4.3)

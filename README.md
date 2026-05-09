@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AV365 (AgroVantagem 365) 🐓🌾
 
-## Getting Started
+**AV365** é uma plataforma SaaS (Software as a Service) de ponta projetada para revolucionar a gestão de produtores de aves (avicultura de postura e corte). Com uma interface *Premium* (Elite Layout Orchestrator) e recursos de inteligência de dados, a plataforma oferece um controle "Bio-Operacional" em tempo real para maximizar a produtividade e a biosseguridade das granjas.
 
-First, run the development server:
+## 🚀 Principais Recursos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### 1. Cockpit Bio-Operacional (Dashboard Principal)
+* **Monitoramento em Tempo Real:** KPIs vitais como Ovos Coletados, Taxa de Postura, Plantel Ativo e Receita Mensal.
+* **Alertas Bio-Técnicos:** Sistema inteligente que cruza dados de mortalidade e produção para alertar o produtor sobre anomalias no plantel.
+* **Gráficos Avançados:** "Produção vs Metas" com indicadores visuais de performance.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Gestão de Saúde e Biosseguridade (Health Hub)
+* **Monitoramento por Lote:** Acompanhamento individual do vigor médio, histórico de vacinas e curva de mortalidade de cada lote.
+* **Alertas Ativos:** Painel lateral dinâmico alertando sobre necessidades imediatas de intervenção sanitária.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Orquestrador de Layout Elite
+* **Customização Administrativa:** O sistema possui um `AdminInspector` embutido que permite aos gestores redimensionarem e reordenarem os cards e módulos do sistema ao vivo.
+* **Grid Inteligente:** Baseado em 12 colunas, o grid CSS responde perfeitamente a diferentes dispositivos (Desktop, Tablet, Smartphone) sem quebrar componentes complexos (resolvido "Grid Blowout").
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Infraestrutura e Financeiro
+* **Gestão de Galpões (Houses):** Capacidade, taxa de ocupação e status de manutenção.
+* **Hub Financeiro:** Análise rápida de lucratividade com mini-gráficos (sparklines) apontando tendências financeiras.
 
-## Learn More
+## 🛠️ Tecnologias Utilizadas
+* **Framework:** Next.js (App Router)
+* **Linguagem:** TypeScript
+* **Estilização:** Tailwind CSS (com foco em design Glassmorphism e Bento Box)
+* **Banco de Dados:** PostgreSQL (gerenciado via Prisma ORM)
+* **Gráficos:** Recharts
+* **Animações:** Framer Motion
+* **Ícones:** Lucide React
+* **Autenticação:** Clerk
 
-To learn more about Next.js, take a look at the following resources:
+## 📦 Estrutura do Projeto
+* `src/app/`: Rotas principais da aplicação (Dashboard, Health, Finance, etc).
+* `src/components/`: Componentes reutilizáveis focados no "Elite Design System".
+* `src/lib/`: Configurações de banco de dados (Prisma) e utilitários.
+* `src/styles/`: Configurações globais de estilo e variáveis CSS.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🔒 Segurança (Git e Dados Sensíveis)
+O arquivo `.gitignore` deste repositório está devidamente configurado para ignorar qualquer arquivo `.env`, garantindo que chaves de API, senhas de banco de dados e credenciais do Clerk/Vercel permaneçam privadas e seguras localmente.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔧 Como Rodar Localmente
 
-## Deploy on Vercel
+1. Clone o repositório.
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+3. Configure o banco de dados e a autenticação no arquivo `.env` (solicite o modelo `.env.example` se necessário).
+4. Rode as migrações do Prisma:
+   ```bash
+   npx prisma generate
+   npx prisma db push
+   ```
+5. Inicie o servidor:
+   ```bash
+   npm run dev
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.

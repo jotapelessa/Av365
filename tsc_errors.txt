@@ -1,0 +1,182 @@
+node_modules/@clerk/backend/dist/api/endpoints/M2MTokenApi.d.ts(74,5): error TS18028: Private identifiers are only available when targeting ECMAScript 2015 and higher.
+node_modules/@clerk/backend/dist/errors.d.ts(1,28): error TS2307: Cannot find module '@clerk/shared/error' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/error.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/backend/dist/errors.d.ts(2,64): error TS2307: Cannot find module '@clerk/shared/error' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/error.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/backend/dist/index.d.ts(1,48): error TS2307: Cannot find module '@clerk/shared/telemetry' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/telemetry.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/backend/dist/index.d.ts(2,36): error TS2307: Cannot find module '@clerk/shared/telemetry' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/telemetry.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/backend/dist/internal.d.ts(17,66): error TS2307: Cannot find module '@clerk/shared/authorization-errors' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/authorization-errors.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/backend/dist/jwt/verifyMachineJwt.d.ts(14,143): error TS2344: Type 'MachineTokenVerificationError' does not satisfy the constraint 'Error'.
+  Type 'MachineTokenVerificationError' is missing the following properties from type 'Error': name, message
+node_modules/@clerk/backend/dist/jwt/verifyMachineJwt.d.ts(18,156): error TS2344: Type 'MachineTokenVerificationError' does not satisfy the constraint 'Error'.
+  Type 'MachineTokenVerificationError' is missing the following properties from type 'Error': name, message
+node_modules/@clerk/backend/dist/proxy.d.ts(1,36): error TS2307: Cannot find module '@clerk/shared/constants' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/constants.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/backend/dist/tokens/types.d.ts(1,36): error TS2307: Cannot find module '@clerk/shared/pathToRegexp' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/pathToRegexp.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/nextjs/dist/types/server/routeMatcher.d.ts(1,46): error TS2307: Cannot find module '@clerk/shared/pathMatcher' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/pathMatcher.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/nextjs/dist/types/server/routeMatcher.d.ts(5,54): error TS2339: Property 'href' does not exist on type '{}'.
+node_modules/@clerk/nextjs/dist/types/server/types.d.ts(1,36): error TS2307: Cannot find module '@clerk/shared/proxy' or its corresponding type declarations.
+  There are types at '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@clerk/shared/dist/runtime/proxy.d.mts', but this result could not be resolved under your current 'moduleResolution' setting. Consider updating to 'node16', 'nodenext', or 'bundler'.
+node_modules/@clerk/shared/dist/types/index.d.ts(1,35): error TS2307: Cannot find module '@zxcvbn-ts/core' or its corresponding type declarations.
+node_modules/@clerk/shared/dist/types/index.d.ts(2,46): error TS2307: Cannot find module '@zxcvbn-ts/language-common' or its corresponding type declarations.
+node_modules/@clerk/shared/dist/types/index.d.ts(3,37): error TS2307: Cannot find module '@base-org/account' or its corresponding type declarations.
+node_modules/@clerk/shared/dist/types/index.d.ts(4,40): error TS2307: Cannot find module '@coinbase/wallet-sdk' or its corresponding type declarations.
+node_modules/@clerk/shared/dist/types/index.d.ts(5,37): error TS2307: Cannot find module '@stripe/stripe-js' or its corresponding type declarations.
+node_modules/@clerk/shared/dist/types/index.d.ts(8147,53): error TS2339: Property 'theme' does not exist on type 'ClerkAppearanceRegistry'.
+node_modules/next/dist/build/webpack/loaders/next-app-loader/index.d.ts(1,13): error TS2613: Module '"next/dist/compiled/webpack/webpack"' has no default export. Did you mean to use 'import { webpack } from "next/dist/compiled/webpack/webpack"' instead?
+node_modules/next/dist/client/components/catch-error.d.ts(2,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/components/error-boundary.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/components/http-access-fallback/error-boundary.d.ts(11,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/components/layout-router.d.ts(3,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/components/segment-cache/cache.d.ts(104,21): error TS2304: Cannot find name 'PromiseWithResolvers'.
+node_modules/next/dist/client/image-component.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/link.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/script.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/client/with-router.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/lib/metadata/metadata.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/next-devtools/userspace/pages/pages-dev-overlay-setup.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/pages/_app.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/pages/_document.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/pages/_error.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/server/app-render/types.d.ts(10,8): error TS1192: Module '"next/dist/compiled/superstruct"' has no default export.
+node_modules/next/dist/server/web/spec-extension/adapters/headers.d.ts(39,16): error TS2304: Cannot find name 'HeadersIterator'.
+node_modules/next/dist/server/web/spec-extension/adapters/headers.d.ts(40,13): error TS2304: Cannot find name 'HeadersIterator'.
+node_modules/next/dist/server/web/spec-extension/adapters/headers.d.ts(41,15): error TS2304: Cannot find name 'HeadersIterator'.
+node_modules/next/dist/server/web/spec-extension/adapters/headers.d.ts(42,26): error TS2304: Cannot find name 'HeadersIterator'.
+node_modules/next/dist/shared/lib/app-router-context.shared-runtime.d.ts(4,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/app-router-types.d.ts(7,13): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/dynamic.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/head-manager-context.shared-runtime.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/head.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/image-config-context.shared-runtime.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/loadable-context.shared-runtime.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/loadable.shared-runtime.d.ts(21,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/router-context.shared-runtime.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/server-inserted-html.shared-runtime.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/next/dist/shared/lib/utils.d.ts(10,13): error TS1192: Module '"fs"' has no default export.
+node_modules/next/dist/styled-jsx/types/global.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+node_modules/sonner/dist/index.d.ts(1,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+src/app/tasks/actions.ts(4,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+src/app/tasks/page.tsx(2,24): error TS2307: Cannot find module '@/lib/prisma' or its corresponding type declarations.
+src/app/tasks/page.tsx(3,25): error TS6142: Module './TasksClient' was resolved to '/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/src/app/tasks/TasksClient.tsx', but '--jsx' is not set.
+src/app/tasks/page.tsx(38,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/page.tsx(39,7): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(3,8): error TS1259: Module '"/Users/jotapelessa/DEV/OUTROS PROJETOS/AV365/node_modules/@types/react/index"' can only be default-imported using the 'esModuleInterop' flag
+src/app/tasks/TaskModal.tsx(21,30): error TS2307: Cannot find module '@/components/ui/LuxuryButton' or its corresponding type declarations.
+src/app/tasks/TaskModal.tsx(86,5): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(88,9): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(89,11): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(96,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(97,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(98,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(99,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(100,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(102,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(103,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(106,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(107,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(108,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(112,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(116,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(120,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(122,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(123,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(124,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(126,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(134,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(150,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(151,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(158,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(159,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(160,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(167,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(168,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(171,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(172,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(179,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(180,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(186,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(187,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(188,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(189,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(190,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(192,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(201,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(202,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(203,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(205,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(207,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(224,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(225,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(226,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(227,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(229,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(234,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(235,40): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(239,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(240,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(241,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(243,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(248,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(249,45): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(253,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(254,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(255,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(257,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(262,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(263,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(264,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(265,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(266,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(267,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(268,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(269,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(276,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(278,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(285,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(286,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(287,27): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(289,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(294,27): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(295,47): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(301,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(302,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(303,27): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(305,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(310,27): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(311,47): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(317,23): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(318,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(319,27): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(321,25): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(326,27): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(327,55): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(336,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(337,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(338,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(339,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(340,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(342,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(343,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(344,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(347,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(352,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(353,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(354,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(355,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(361,13): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(362,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(364,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(365,21): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(368,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(369,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(370,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(373,15): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(374,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(380,17): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
+src/app/tasks/TaskModal.tsx(381,19): error TS17004: Cannot use JSX unless the '--jsx' flag is provided.
